@@ -58,14 +58,16 @@ df$datetime <- NULL
 str(df)
 names(df)
 ```
-Step 2. Partition Data
+**Step 2. Partition Data**
+```r
 set.seed(1234)
 training_cases <- sample(nrow(df), round(nrow(df) * 0.60))
 
 train <- df[training_cases, ]
 test  <- df[-training_cases, ]
-
-Step 3. Build Baseline Linear Regression Model
+```
+**Step 3. Build Baseline Linear Regression Model**
+```r
 model_lr <- lm(count ~ ., data = train)
 model_lr <- step(model_lr)      # Stepwise selection
 summary(model_lr)
@@ -76,8 +78,9 @@ observations   <- test$count
 errors_lr <- observations - predictions_lr
 rmse_lr   <- sqrt(mean(errors_lr^2))
 mape_lr   <- mean(abs(errors_lr / observations))
-
-Step 4. Regression Tree
+```
+**Step 4. Regression Tree**
+```r
 model_rt <- rpart(count ~ ., data = train)
 predictions_rt <- predict(model_rt, test)
 errors_rt <- observations - predictions_rt
@@ -95,8 +98,9 @@ prediction_prune_rt <- predict(model_prune_rt, test)
 error_prune_rt <- observations - prediction_prune_rt
 rmse_prune_rt  <- sqrt(mean(error_prune_rt^2))
 mape_prune_rt  <- mean(abs(error_prune_rt / observations))
-
-Step 5. Bagging / Random Forest
+```
+**Step 5. Bagging / Random Forest**
+```r
 rf <- randomForest(count ~ ., data = train, ntree = 500)
 
 pred_rf <- predict(rf, test)
@@ -104,8 +108,9 @@ errors_rf <- observations - pred_rf
 
 rmse_rf  <- sqrt(mean(errors_rf^2))
 mape_rf  <- mean(abs(errors_rf / observations))
-
-Step 6. Stacking Ensemble Model
+```
+**Step 6. Stacking Ensemble Model**
+```r
 # Predictions of all models for stacked learning
 pred_lr_full <- predict(model_lr, df)
 pred_rt_full <- predict(model_rt, df)
@@ -122,3 +127,4 @@ pred_stacked <- predict(stacked, test_stacked)
 errors_stacked <- observations - pred_stacked
 rmse_stacked   <- sqrt(mean(errors_stacked^2))
 mape_stacked   <- mean(abs(errors_stacked / observations))
+```
