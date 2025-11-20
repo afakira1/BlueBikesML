@@ -18,8 +18,9 @@
 - `stats` — built-in linear regression modeling
 
 ## Project Walk-through:
-Preliminary
-Step 1. Load & Clean Data
+**Preliminary**
+**Step 1. Load & Clean Data**
+```r
 # Load data
 df <- read.csv("data/train.csv", stringsAsFactors = FALSE)
 
@@ -56,7 +57,7 @@ df$datetime <- NULL
 # Preview structure
 str(df)
 names(df)
-
+```
 Step 2. Partition Data
 set.seed(1234)
 training_cases <- sample(nrow(df), round(nrow(df) * 0.60))
