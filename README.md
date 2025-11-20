@@ -18,7 +18,6 @@
 - `stats` — built-in linear regression modeling
 
 ## Project Walk-through:
-✨ Project Walk-through
 Preliminary
 Step 1. Load & Clean Data
 # Load data
