@@ -79,6 +79,8 @@ errors_lr <- observations - predictions_lr
 rmse_lr   <- sqrt(mean(errors_lr^2))
 mape_lr   <- mean(abs(errors_lr / observations))
 ```
+### Linear Regression Model Performance Visualization
+
 **Step 4. Regression Tree**
 ```r
 model_rt <- rpart(count ~ ., data = train)
