@@ -131,6 +131,17 @@ errors_rf <- observations - pred_rf
 rmse_rf  <- sqrt(mean(errors_rf^2))
 mape_rf  <- mean(abs(errors_rf / observations))
 ```
+### Random Forest Visualization
+<img width="1324" height="802" alt="BlueBikesRF" src="https://github.com/user-attachments/assets/7aca2589-ef69-4d84-963f-4c321b2e2abd" />
+
+### Findings — Random Forest Model
+
+The Random Forest model significantly improves predictive accuracy compared to both the Linear Regression and Regression Tree models. By averaging predictions across hundreds of trees, the model reduces variance and captures complex nonlinear interactions that simpler models cannot.
+
+The variable importance analysis shows that **hour of day** is by far the strongest predictor of rider demand, followed by **apparent temperature (atemp)**, **temperature**, and **humidity**. These patterns reinforce real-world usage behavior: demand grows during typical commuting hours and increases substantially in warmer and more comfortable weather conditions. In contrast, variables such as **holiday**, **weather category**, and **working day status** play relatively minor roles in prediction.
+
+The Random Forest reduces RMSE to **72.79** (from 110.66 for Linear Regression and 98.31 for the Regression Tree), meaning predictions are on average about 73 riders off from actual demand—representing a substantial improvement relative to the baseline RMSE of 181.54. This increased accuracy makes Random Forest a strong operational forecasting tool.
+
 **Step 6. Stacking Ensemble Model**
 ```r
 # Predictions of all models for stacked learning
