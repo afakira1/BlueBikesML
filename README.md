@@ -80,6 +80,7 @@ rmse_lr   <- sqrt(mean(errors_lr^2))
 mape_lr   <- mean(abs(errors_lr / observations))
 ```
 ### Linear Regression Model Performance Visualization
+<img width="1324" height="802" alt="BlueBikesLR" src="https://github.com/user-attachments/assets/1c8056bb-882d-4416-b441-e762924369f0" />
 
 **Step 4. Regression Tree**
 ```r
