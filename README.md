@@ -131,7 +131,13 @@ errors_rf <- observations - pred_rf
 rmse_rf  <- sqrt(mean(errors_rf^2))
 mape_rf  <- mean(abs(errors_rf / observations))
 ```
-### Random Forest Visualization
+### Random Forest Observed vs Predicted Visualization
+<img width="1324" height="802" alt="BlueBikesObservedVsPredictedRF" src="https://github.com/user-attachments/assets/8b042d04-16d1-4cf0-aeec-7c752c4bcbf8" />
+The plot above compares the Random Forest model’s predicted rider counts with the actual observed values. The **red diagonal line** represents perfect prediction accuracy, while the **blue trend line** reflects the model’s actual fitted trend. Unlike the Linear Regression plot earlier, the Random Forest plot shows a much tighter clustering of points around the identity line.
+
+This improvement visually confirms the significant reduction in prediction error achieved by Random Forest, especially during high-demand periods where the linear model struggled most.
+
+### Feature Importance - Random Forest
 <img width="1324" height="802" alt="BlueBikesRF" src="https://github.com/user-attachments/assets/7aca2589-ef69-4d84-963f-4c321b2e2abd" />
 
 ### Findings — Random Forest Model
