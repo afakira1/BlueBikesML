@@ -131,6 +131,15 @@ errors_rf <- observations - pred_rf
 rmse_rf  <- sqrt(mean(errors_rf^2))
 mape_rf  <- mean(abs(errors_rf / observations))
 ```
+### Model Performance Metrics (RMSE & MAPE)
+
+| Model             | RMSE   | MAPE  |
+|-------------------|--------|-------|
+| Baseline          | 181.54 | 7.93% |
+| Linear Regression | 110.66 | 2.48% |
+| Regression Tree   | 98.31  | 1.00% |
+| Random Forest     | 72.79  | 1.09% |
+
 ### Random Forest Observed vs Predicted Visualization
 <img width="1324" height="802" alt="BlueBikesObservedVsPredictedRF" src="https://github.com/user-attachments/assets/8b042d04-16d1-4cf0-aeec-7c752c4bcbf8" />
 The plot above compares the Random Forest model’s predicted rider counts with the actual observed values. The **red diagonal line** represents perfect prediction accuracy, while the **blue trend line** reflects the model’s actual fitted trend. Unlike the Linear Regression plot earlier, the Random Forest plot shows a much tighter clustering of points around the identity line.
