@@ -176,3 +176,33 @@ errors_stacked <- observations - pred_stacked
 rmse_stacked   <- sqrt(mean(errors_stacked^2))
 mape_stacked   <- mean(abs(errors_stacked / observations))
 ```
+### Final Model Comparison — Original vs. Stacking Ensemble
+
+| Model                | RMSE (Original) | MAPE (Original) | RMSE (Stacking) | MAPE (Stacking) |
+|----------------------|-----------------|-----------------|-----------------|-----------------|
+| Baseline             | 181.54          | 7.93%           | —               | —               |
+| Linear Regression    | 110.66          | 2.48%           | 68.26           | 0.62%           |
+| Regression Tree      | 98.31           | 1.00%           | 68.26           | 0.62%           |
+| Random Forest        | 72.79           | 1.09%           | 68.26           | 0.62%           |
+| **Stacking Ensemble**| **68.26**       | **0.62%**       | **68.26**       | **0.62%**       |
+
+### Findings — Stacking Ensemble Model
+
+The Stacking Ensemble model delivers the strongest overall predictive performance by combining the strengths of multiple models (Linear Regression, Regression Tree, and Random Forest). Instead of relying on a single learning method, stacking learns how to optimally weight the predictions from each base model, producing a more stable and accurate final prediction.
+
+The Stacking model reduces RMSE to **68.26**, improving upon the already strong Random Forest RMSE of **72.79** and dramatically outperforming both the baseline (**181.54**) and Linear Regression (**110.66**). With a MAPE of **0.62%**, the model predicts rider demand within less than **1% of the true number of riders** on average, making it highly reliable for operational forecasting.
+
+These improvements demonstrate the value of ensemble methods in capturing complex seasonal, hourly, and weather-driven patterns that cannot be accurately represented by simpler individual models.
+
+### Final Recommendation & Business Impact
+
+Based on the comparative model evaluation, the **Stacking Ensemble model is recommended as the final forecasting solution** for Bluebikes rider demand prediction. The model provides industry-leading accuracy, lowering forecasting error by more than **92%** compared to the baseline method of using historical averages and reducing RMSE from approximately **182 riders to 68 riders**—a **62% improvement** in average prediction accuracy.
+
+With this level of precision, Bluebikes can make more informed decisions across multiple areas of daily operations, including:
+
+- **Bike distribution & rebalancing** — ensuring bicycles are available where riders need them
+- **Staffing & fleet scheduling** — aligning labor with predicted demand and reducing overtime inefficiencies
+- **Maintenance & inventory planning** — optimizing resource allocation by anticipating seasonal ridership patterns
+- **Customer experience improvement** — reducing stockouts and overcrowded stations during peak demand
+
+The Stacking Ensemble model can be integrated into daily forecasting workflows or deployed as part of an automated dashboard to support real-time decision-making. Future enhancements may include geographic station-level modeling, deep learning approaches, or automated hyperparameter tuning for additional performance gains.
